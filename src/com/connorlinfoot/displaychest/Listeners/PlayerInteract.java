@@ -42,7 +42,6 @@ public class PlayerInteract implements Listener {
         Chest chest = (Chest) block.getState();
         final Inventory chestInventory = chest.getInventory();
 
-        Bukkit.broadcastMessage(PlayerInteract.current.toString());
         Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
             @Override
             public void run() {
