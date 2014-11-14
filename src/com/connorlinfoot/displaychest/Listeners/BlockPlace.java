@@ -21,7 +21,9 @@ public class BlockPlace implements Listener {
 
         Player player = event.getPlayer();
         if( !player.hasPermission("displaychest.edit") ) return;
-
+		
+		if( block.getItemMeta().getDisplayName().contains("DisplayChest") ) return;
+		
         Block block = event.getBlockPlaced();
         Integer ChestX = block.getX();
         Integer ChestY = block.getY();
