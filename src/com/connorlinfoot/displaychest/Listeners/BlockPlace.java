@@ -11,6 +11,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 
 public class BlockPlace implements Listener {
@@ -21,9 +22,10 @@ public class BlockPlace implements Listener {
 
         Player player = event.getPlayer();
         if( !player.hasPermission("displaychest.edit") ) return;
-		
-		if( block.getItemMeta().getDisplayName().contains("DisplayChest") ) return;
-		
+
+        ItemStack itemStack = player.getItemInHand();
+		if( itemStack.getItemMeta().getDisplayName() == null || !itemStack.getItemMeta().getDisplayName().contains("<-> DisplayChest <->") ) return;
+
         Block block = event.getBlockPlaced();
         Integer ChestX = block.getX();
         Integer ChestY = block.getY();

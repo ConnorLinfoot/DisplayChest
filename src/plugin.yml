@@ -1,7 +1,7 @@
 name: DisplayChest
 description: DisplayChest
 main: com.connorlinfoot.displaychest.DisplayChest
-version: 1.0.2
+version: 1.0.3
 commands:
   displaychest:
     description: Spawn in a display chest
