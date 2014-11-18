@@ -17,14 +17,14 @@ public class DisplayChestCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String string, String[] args) {
 
-        if( !(sender instanceof Player) ){
+        if (!(sender instanceof Player)) {
             sender.sendMessage(ChatColor.RED + "This command must be ran as a player");
             return false;
         }
 
         Player player = (Player) sender;
 
-        if( !player.hasPermission("displaychest.edit") ){
+        if (!player.hasPermission("displaychest.edit")) {
             player.sendMessage(ChatColor.RED + "You do not have the correct permission to use this command");
             return false;
         }

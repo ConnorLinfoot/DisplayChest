@@ -8,11 +8,12 @@ import org.bukkit.event.inventory.InventoryCloseEvent;
 public class InventoryClose implements Listener {
 
     @EventHandler
-    public void onInventoryClose(InventoryCloseEvent event){
+    public void onInventoryClose(InventoryCloseEvent event) {
         Player player = (Player) event.getPlayer();
 
-        if( PlayerInteract.current.contains( player.getName() ) ){
-            if( event.getInventory().getTitle().contains("DisplayChest") ) PlayerInteract.current.remove( player.getName() );
+        if (PlayerInteract.current.contains(player.getName())) {
+            if (event.getInventory().getTitle().contains("DisplayChest"))
+                PlayerInteract.current.remove(player.getName());
         }
     }
 }

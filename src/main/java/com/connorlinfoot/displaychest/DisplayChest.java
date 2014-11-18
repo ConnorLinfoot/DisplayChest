@@ -14,6 +14,10 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class DisplayChest extends JavaPlugin implements Listener {
     private static Plugin instance;
 
+    public static Plugin getInstance() {
+        return instance;
+    }
+
     public void onEnable() {
         instance = this;
         getConfig().options().copyDefaults(true);
@@ -31,18 +35,14 @@ public class DisplayChest extends JavaPlugin implements Listener {
         console.sendMessage("");
 
         getCommand("displaychest").setExecutor(new DisplayChestCommand());
-        Bukkit.getPluginManager().registerEvents(new BlockPlace(),this);
-        Bukkit.getPluginManager().registerEvents(new InventoryClick(),this);
-        Bukkit.getPluginManager().registerEvents(new InventoryClose(),this);
-        Bukkit.getPluginManager().registerEvents(new PlayerInteract(),this);
-        Bukkit.getPluginManager().registerEvents(new PlayerQuit(),this);
+        Bukkit.getPluginManager().registerEvents(new BlockPlace(), this);
+        Bukkit.getPluginManager().registerEvents(new InventoryClick(), this);
+        Bukkit.getPluginManager().registerEvents(new InventoryClose(), this);
+        Bukkit.getPluginManager().registerEvents(new PlayerInteract(), this);
+        Bukkit.getPluginManager().registerEvents(new PlayerQuit(), this);
     }
 
     public void onDisable() {
         getLogger().info(getDescription().getName() + " has been disabled!");
-    }
-
-    public static Plugin getInstance() {
-        return instance;
     }
 }
