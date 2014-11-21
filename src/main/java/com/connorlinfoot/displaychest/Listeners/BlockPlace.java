@@ -32,8 +32,6 @@ public class BlockPlace implements Listener {
         String chestID = String.valueOf(ChestX + "." + ChestY + "." + ChestZ);
         Plugin plugin = DisplayChest.getInstance();
         FileConfiguration config = plugin.getConfig();
-        //if( !plugin.getConfig().isSet("Chests." + chestID) ) return;
-
         config.set("Chests." + chestID, true);
         plugin.saveConfig();
         player.sendMessage(ChatColor.GREEN + "Your DisplayChest has been created, right click while holding shift to edit the contents");

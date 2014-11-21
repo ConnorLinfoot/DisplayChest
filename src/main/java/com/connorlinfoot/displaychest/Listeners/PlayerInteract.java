@@ -29,10 +29,21 @@ public class PlayerInteract implements Listener {
         String chestID = String.valueOf(ChestX + "." + ChestY + "." + ChestZ);
         Plugin plugin = DisplayChest.getInstance();
         FileConfiguration config = plugin.getConfig();
+		
+		final Player player = event.getPlayer();
+        if (!config.isSet("Chests." + chestID)) {
+			if (player.isSneaking() && player.hasPermission("displaycheat.edit")){
+				/* Turn a nornal chest into a display chest if clicked while sneaking */
+				Plugin plugin = DisplayChest.getInstance();
+				FileConfiguration config = plugin.getConfig();
+				config.set("Chests." + chestID, true);
+				plugin.saveConfig();
+				player.sendMessage(ChatColor.GREEN + "Your DisplayChest has been created, right click while holding shift to edit the contents");
+				event.setCancelled(true);
+			}
+			return;
+		}
 
-        if (!config.isSet("Chests." + chestID)) return;
-
-        final Player player = event.getPlayer();
         if (!player.hasPermission("displaychest.view") && !player.hasPermission("displaychest.edit")) {
             event.setCancelled(true);
             return;
