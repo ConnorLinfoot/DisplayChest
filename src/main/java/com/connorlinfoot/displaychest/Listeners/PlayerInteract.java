@@ -34,11 +34,9 @@ public class PlayerInteract implements Listener {
         if (!config.isSet("Chests." + chestID)) {
 			if (player.isSneaking() && player.hasPermission("displaycheat.edit")){
 				/* Turn a nornal chest into a display chest if clicked while sneaking */
-				Plugin plugin = DisplayChest.getInstance();
-				FileConfiguration config = plugin.getConfig();
 				config.set("Chests." + chestID, true);
 				plugin.saveConfig();
-				player.sendMessage(ChatColor.GREEN + "Your DisplayChest has been created, right click while holding shift to edit the contents");
+				player.sendMessage("Your DisplayChest has been created, right click while holding shift to edit the contents");
 				event.setCancelled(true);
 			}
 			return;
